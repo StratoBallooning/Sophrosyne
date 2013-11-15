@@ -1,0 +1,35 @@
+<?php
+/**
+ * @file
+ * Install and update functions.
+ */
+
+/**
+ * Implements hook_install
+ *
+ * Add content type and other install operations.
+ */
+function sophrosyne_install()
+{
+  $t = get_t();
+  /** Step 1 **/
+
+  // Machine name of content type
+  $name = 'sophrosyne';
+
+  // Define the node type
+  $article = array(
+    'type' => 'sophrosyne',
+    'name' => $t('Refereed Article'),
+    'description' => $t('An article to be reviewed'),
+    'title_label' => $t('Article Title'),
+    'base' => 'node_content',
+    'custom' => TRUE
+  );
+
+  $type = node_type_set_defaults($article);
+
+  node_type_save($type);
+}
+
+?>
